@@ -9,6 +9,9 @@ double mysqrt(double x) {
     return 0;
   }
 
+#if defined(HAVE_LOG) && defined(HAVE_EXP)
+  double result = exp(log(x) * 0.5);
+#else
   double result = x;
   double delta;
 
@@ -21,6 +24,6 @@ double mysqrt(double x) {
     
     cout << "Computing sqrt of " << x << " to be " << result << endl;
   }
-
+#endif
   return result;
 }

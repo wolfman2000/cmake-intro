@@ -8,6 +8,11 @@ set (Tutorial_VERSION_MINOR 0)
 # Option for using our own amth function.
 option(USE_MYMATH "Use tutorial provided math implementation" ON)
 
+# Does the system have log and exp math functions?
+include (${CMAKE_ROOT}/Modules/CheckFunctionExists.cmake) # Built-in functionality?
+check_function_exists(log HAVE_LOG)
+check_function_exists(exp HAVE_EXP)
+
 # Configure a header file to pass in the CMake settings to the source code.
 configure_file(
   "${PROJECT_SOURCE_DIR}/TutorialConfig.hpp.in"
