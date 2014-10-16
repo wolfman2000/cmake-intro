@@ -31,3 +31,7 @@ add_executable(Tutorial tutorial.cpp)
 # Link everything together.
 target_link_libraries(Tutorial ${EXTRA_LIBS})
 
+# Set up the install targets.
+install (TARGETS Tutorial DESTINATION bin)
+install (FILES "${PROJECT_BINARY_DIR}/TutorialConfig.hpp" DESTINATION include)
+
