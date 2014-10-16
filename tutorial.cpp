@@ -3,6 +3,11 @@
 #include <iostream>
 #include <cmath>
 #include "TutorialConfig.hpp"
+
+#ifdef USE_MYMATH
+#include "MathFunctions.hpp"
+#endif
+
 using std::cout;
 using std::endl;
 
@@ -14,7 +19,11 @@ int main(int argc, char *argv[]) {
   }
 
   double inputValue = atof(argv[1]);
+#ifdef USE_MYMATH
+  double outputValue = mysqrt(inputValue);
+#else
   double outputValue = sqrt(inputValue);
+#endif
 
   cout << "The square root of " << inputValue << " is " << outputValue << endl;
 
