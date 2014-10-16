@@ -35,3 +35,27 @@ target_link_libraries(Tutorial ${EXTRA_LIBS})
 install (TARGETS Tutorial DESTINATION bin)
 install (FILES "${PROJECT_BINARY_DIR}/TutorialConfig.hpp" DESTINATION include)
 
+# Don't forget to include some tests.
+enable_testing()
+
+# Does the application run?
+add_test(TutorialRuns Tutorial 25)
+
+# Utilize a macro for multiple tests of the same type.
+macro (do_test arg result)
+  add_test(TutorialComp${arg} Tutorial ${arg})
+  set_tests_properties (TutorialComp${arg} PROPERTIES PASS_REGULAR_EXPRESSION ${result})
+endmacro(do_test)
+
+# Can it compute the sqrt of 25 correctly?
+do_test(25 "25 is 5")
+
+# Can it handle negative numbers?
+do_test(-25 "-25 is 0")
+
+# Can it handle small numbers?
+do_test(0.0001 "0.0001 is 0.01")
+
+# Does the usage message work?
+add_test (TutorialUsage Tutorial)
+set_tests_properties(TutorialUsage PROPERTIES PASS_REGULAR_EXPRESSION "Usage:.*number")
