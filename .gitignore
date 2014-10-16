@@ -7,6 +7,7 @@ cmake_install.cmake
 *.build/
 Debug/
 Release/
+TutorialConfig.hpp
 
 # Compiled Object files
 *.slo
