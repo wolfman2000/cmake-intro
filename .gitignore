@@ -10,6 +10,7 @@ Release/
 TutorialConfig.hpp
 CTestTestfile.cmake
 Testing/
+MathFunctions/Table.hpp
 
 # Compiled Object files
 *.slo

@@ -29,7 +29,6 @@ if (USE_MYMATH)
   set (EXTRA_LIBS ${EXTRA_LIBS} MathFunctions)
 endif (USE_MYMATH)
 
-
 # Add the executable (this usually goes near the end)
 add_executable(Tutorial tutorial.cpp)
 

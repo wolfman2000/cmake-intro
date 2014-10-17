@@ -1,5 +1,10 @@
 #include <iostream>
 #include "MathFunctions.hpp"
+#include "TutorialConfig.hpp"
+
+// Don't forget the generated table.
+#include "Table.hpp"
+
 using std::cout;
 using std::endl;
 
@@ -9,21 +14,23 @@ double mysqrt(double x) {
     return 0;
   }
 
-#if defined(HAVE_LOG) && defined(HAVE_EXP)
-  double result = exp(log(x) * 0.5);
-#else
   double result = x;
-  double delta;
-
-  for (int i = 0; i < 10; ++i) {
-    if (result <= 0) {
-      result = 0.1;
-    }
-    delta = x - (result * result);
-    result = result + 0.5 * delta / result;
-    
-    cout << "Computing sqrt of " << x << " to be " << result << endl;
+  
+  if (x >= 1 && x < 10) {
+    result = sqrtTable[static_cast<int>(x)];
   }
-#endif
+  else {
+    double delta;
+
+    for (int i = 0; i < 10; ++i) {
+      if (result <= 0) {
+        result = 0.1;
+      }
+      delta = x - (result * result);
+      result = result + 0.5 * delta / result;
+      
+      cout << "Computing sqrt of " << x << " to be " << result << endl;
+    }
+  }
   return result;
 }
