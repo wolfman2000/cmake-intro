@@ -63,3 +63,11 @@ do_test(0.0001 "0.0001 is 0.01")
 # Does the usage message work?
 add_test (TutorialUsage Tutorial)
 set_tests_properties(TutorialUsage PROPERTIES PASS_REGULAR_EXPRESSION "Usage:.*number")
+
+# CMake can make an installer package driven by CPack.
+include(InstallRequiredSystemLibraries)
+set (CPACK_RESOURCE_FILE_LICENSE "${CMAKE_CURRENT_SOURCE_DIR}/LICENSE")
+set (CPACK_PACKAGE_VERSION_MAJOR "${Tutorial_VERSION_MAJOR}")
+set (CPACK_PACKAGE_VERSION_MINOR "${Tutorial_VERSION_MINOR}")
+include (CPack)
+

@@ -2,6 +2,7 @@
 CMakeCache.txt
 CMakeFiles
 CMakeScripts
+CPack*
 cmake_install.cmake
 *.xcodeproj
 *.build/
@@ -11,6 +12,8 @@ TutorialConfig.hpp
 CTestTestfile.cmake
 Testing/
 MathFunctions/Table.hpp
+Tutorial-*
+install_manifest.txt
 
 # Compiled Object files
 *.slo
